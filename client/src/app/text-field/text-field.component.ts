@@ -29,8 +29,9 @@ export class TextFieldComponent implements OnInit {
     console.log(event.target.value);
   }
 
-  getAll(){
-    this.apiService.getAllText().subscribe(respone => this.getall = respone)
+  async getAll() {
+    let data = await this.apiService.getAllText().toPromise();
+    console.log(data);
   }
 
 }

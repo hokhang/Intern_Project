@@ -28,7 +28,7 @@ export class PageComponent implements OnInit {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component)
 
     const viewContainerRef = this.appTextField.viewContainerRef;
-    
+
     const componentRef = viewContainerRef.createComponent(componentFactory); // replace in there
     componentRef.instance.name = data;
 
@@ -41,4 +41,5 @@ export class PageComponent implements OnInit {
     }
   }
 
+ 
 }

@@ -6,7 +6,7 @@ export class InfoComponent {
     constructor(){}
     getComponents(name_component){
         switch (name_component) {
-            case "text_field":
+            case "text_box":
                 return TextFieldComponent;
             case "button":
                 return ButtonComponent;

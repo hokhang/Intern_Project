@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject, Observable } from 'rxjs'
+import { Subject, Observable } from 'rxjs';
+import { ApiService } from './api.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class TextFieldService {
-  add = [];
+  getall: any
+
   constructor(
     private httpClient: HttpClient,
+    private apiService: ApiService,
   ) {}
-
-  addToFirstName(name){
-    this.add.push(name);
-  }
+  
 }
