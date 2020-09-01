@@ -7,12 +7,11 @@ import { Subject, Observable } from 'rxjs'
 })
 export class TextFieldService {
   add = [];
-  // list: Array<{add: string}> = [];
   constructor(
     private httpClient: HttpClient,
   ) {}
 
-  addToFirstName(name): Observable<any>{
+  addToFirstName(name){
     this.add.push(name);
   }
 }
