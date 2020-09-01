@@ -7,11 +7,9 @@ import { ApiService } from './api.service'
   providedIn: 'root'
 })
 export class TextFieldService {
-  getall: any
-
   constructor(
     private httpClient: HttpClient,
     private apiService: ApiService,
   ) {}
-  
+
 }

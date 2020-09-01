@@ -18,20 +18,15 @@ export class TextFieldComponent implements OnInit {
 
   constructor(
     private textFieldService: TextFieldService,
-    private apiService: ApiService,
   ) {}
 
   ngOnInit(): void {
-    this.getAll();
+    
   }
 
   onKey(event){
     console.log(event.target.value);
   }
 
-  async getAll() {
-    let data = await this.apiService.getAllText().toPromise();
-    console.log(data);
-  }
 
 }
