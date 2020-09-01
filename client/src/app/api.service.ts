@@ -21,12 +21,12 @@ export class ApiService {
       })
     } 
 
-    getAllStudent(): Observable<student> {
-      return this.httpClient.get<student>(this.baseurl + '/student');
+    getAllText(): Observable<any> {
+      return this.httpClient.get<any>(this.baseurl + '/page');
     }
 
-    getOneStudent(id: any): Observable<student> {
-      return this.httpClient.get<student> (this.baseurl + '/student/' + id);
-    }
+    // getOneStudent(id: any): Observable<student> {
+    //   return this.httpClient.get<student> (this.baseurl + '/page/' + id);
+    // }
   
 }

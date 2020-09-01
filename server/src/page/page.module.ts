@@ -6,7 +6,7 @@ import { PageController } from '../page/page.controller';
 import { PageService } from '../page/page.service';
 
 @Module({
-    exports: [TypeOrmModule.forFeature([page])],
+    imports: [TypeOrmModule.forFeature([page])],
     controllers: [PageController],
     providers: [PageService]
 })

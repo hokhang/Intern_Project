@@ -20,7 +20,6 @@ export class PageComponent implements OnInit {
 
   ngOnInit(): void {
     this.renderPage();
-    this.addFirstname(name);
   }
 
   loadComponent(name_component,data){
@@ -29,7 +28,7 @@ export class PageComponent implements OnInit {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component)
 
     const viewContainerRef = this.appTextField.viewContainerRef;
-  
+    
     const componentRef = viewContainerRef.createComponent(componentFactory); // replace in there
     componentRef.instance.name = data;
 
@@ -40,11 +39,6 @@ export class PageComponent implements OnInit {
     for(let i = 0; i < variable.length ; i++){
       this.loadComponent(variable[i].type,variable[i].label)
     }
-
-  }
-
-  addFirstname(name){
-    this.textFieldService.addToFirstName(name)
   }
 
 }

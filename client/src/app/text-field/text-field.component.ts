@@ -11,6 +11,7 @@ import { ApiService } from '../api.service';
 @Injectable()
 export class TextFieldComponent implements OnInit {
   @Input() name: any;
+  getall: any;
 
   // textfield = new MDCTextField(document.querySelector('.mdc-text-field'));
  
@@ -21,15 +22,15 @@ export class TextFieldComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getAll();
   }
 
   onKey(event){
     console.log(event.target.value);
   }
 
-  getFirstname(name){
-    this.textFieldService.addToFirstName(name);
-    window.alert('Your first name has been added')
+  getAll(){
+    this.apiService.getAllText().subscribe(respone => this.getall = respone)
   }
 
 }
