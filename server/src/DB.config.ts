@@ -6,7 +6,7 @@ export const DataBase_CONFIG: TypeOrmModuleOptions = {
     port: 5432,
     username: 'postgres',
     password: 'khanghb',
-    database: 'Manage_student',
+    database: 'Project',
     autoLoadEntities:true,
     synchronize: false,
 }

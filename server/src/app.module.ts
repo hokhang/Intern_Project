@@ -4,9 +4,12 @@ import { AppService } from './app.service';
 import { StudentModule } from './student/student.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataBase_CONFIG } from './DB.config';
+import { PageController } from './page/page.controller';
+import { PageService } from './page/page.service';
+import { PageModule } from './page/page.module';
 
 @Module({
-  imports: [StudentModule, TypeOrmModule.forRoot(DataBase_CONFIG)],
+  imports: [StudentModule, TypeOrmModule.forRoot(DataBase_CONFIG), PageModule],
   controllers: [AppController],
   providers: [AppService],
 })
