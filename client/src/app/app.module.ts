@@ -11,7 +11,6 @@ import { PageComponent } from './page/page.component';
 import { ButtonComponent } from './button/button.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GetDataComponent } from './get-data/get-data.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { GetDataComponent } from './get-data/get-data.component';
     PageComponent,
     ButtonComponent,
     TopBarComponent,
-    GetDataComponent
   ],
   imports: [
     BrowserModule,

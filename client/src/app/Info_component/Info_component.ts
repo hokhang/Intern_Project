@@ -1,16 +1,20 @@
 import { TextFieldComponent } from "../text-field/text-field.component";
 import { ButtonComponent } from '../button/button.component';
-import { TopBarComponent } from '../top-bar/top-bar.component'
+import { TopBarComponent } from '../top-bar/top-bar.component';
+
 
 export class InfoComponent {
-    constructor(){}
+    constructor(
+    ){}
+    name_component: any;
+
     getComponents(name_component){
         switch (name_component) {
-            case "text_box":
+            case "Text_field":
                 return TextFieldComponent;
-            case "button":
+            case "Button":
                 return ButtonComponent;
-            case "top_bar":
+            case "Top_bar":
                 return TopBarComponent;
             default:
                 break;

@@ -7,4 +7,7 @@ export class page {
 
     @Column()
     page_child: string;
+
+    @Column()
+    page_name: string;
 }

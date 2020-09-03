@@ -3,6 +3,7 @@ import { TextFieldDirective } from '../text-field/text-field.directive';
 
 import { InfoComponent } from "src/app/Info_component/Info_component";
 import { TextFieldService } from '../text-field.service';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-page',
@@ -16,6 +17,7 @@ export class PageComponent implements OnInit {
   constructor( 
     private componentFactoryResolver: ComponentFactoryResolver,
     private textFieldService: TextFieldService,
+    private apiService: ApiService,
   ) {}
 
   ngOnInit(): void {
@@ -34,10 +36,12 @@ export class PageComponent implements OnInit {
 
   }
 
-  renderPage(){
-    let variable = [{type: "top_bar", label: "Manage student"},{type:"text_field", label: "First name: "}, {type: "text_field", label: "Last name"}, {type: "button", label:"Add"}];
-    for(let i = 0; i < variable.length ; i++){
-      this.loadComponent(variable[i].type,variable[i].label)
+  async renderPage(){
+    let data = await this.apiService.getAllText();
+    console.log(data)
+    for(let i = 0; i < data.length ; i++){
+      
+      this.loadComponent(data[i].page_child,data[i].page_name);
     }
   }
 

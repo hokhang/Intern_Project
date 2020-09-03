@@ -21,8 +21,9 @@ export class ApiService {
       })
     } 
 
-    getAllText(): Observable<any> {
-      return this.httpClient.get<any>(this.baseurl + '/page');
+    async getAllText(): Promise<any> {
+      let data = await this.httpClient.get<any>(this.baseurl + '/page').toPromise();
+      return data;
     }
 
     // getOneStudent(id: any): Observable<student> {
