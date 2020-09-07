@@ -1,24 +1,17 @@
-
-<!-- <header style="background-color:blue; border: 10px solid transparent;">
-    <div>
-      <section class=" body">
-        <span style="font-size: 40px; color: white; font-family:'Lucida Console', Courier, monospace;"> {{name | uppercase}} </span>
-      </section> 
-    </div>
-</header> -->
-<header >
-  <div >
-    <section style=" align-content: space-between ; padding: 5px; " >
-      <div  > 
-        <span style="font-size: 40px; color: blue; font-family:'Lucida Console', Courier, monospace;"  >{{name | uppercase}}</span>
-      </div>
-      
-      <div> 
-        <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" >list</button>
-      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
-      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button>
-      </div>
-      
-    </section>
-  </div>
-</header>
+<mat-toolbar color = "accent">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>MANAGE STUDENT</span>
+  <!-- <span class="example-spacer"></span> -->
+  <span style="flex: 1 1 auto;"> </span>
+  <button mat-icon-button aria-label="Example icon-button with heart icon">
+    <mat-icon>list</mat-icon>
+  </button>
+  <button mat-icon-button aria-label="Example icon-button with playlist_add icon">
+    <mat-icon>playlist_add</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>search</mat-icon>
+  </button>
+</mat-toolbar>

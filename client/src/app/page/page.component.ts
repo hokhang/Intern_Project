@@ -4,6 +4,7 @@ import { TextFieldDirective } from '../text-field/text-field.directive';
 import { InfoComponent } from "src/app/Info_component/Info_component";
 import { TextFieldService } from '../text-field.service';
 import { ApiService } from '../api.service';
+import { dataOfTextField } from '../text-field/interface/interface.dto';
 
 @Component({
   selector: 'app-page',
@@ -12,7 +13,7 @@ import { ApiService } from '../api.service';
 })
 export class PageComponent implements OnInit {
 
-  @ViewChild(TextFieldDirective,{static: true}) appTextField: TextFieldDirective;
+  @ViewChild(TextFieldDirective,{static: true}) apptextField: TextFieldDirective;
 
   constructor( 
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -22,6 +23,10 @@ export class PageComponent implements OnInit {
 
   ngOnInit(): void {
     this.renderPage();
+    this.textFieldService.share_data.subscribe(data=>{
+      let info:dataOfTextField = data;
+      console.log(info);
+    })
   }
 
   loadComponent(name_component,data){
@@ -29,7 +34,7 @@ export class PageComponent implements OnInit {
     const component = components.getComponents(name_component)
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component)
 
-    const viewContainerRef = this.appTextField.viewContainerRef;
+    const viewContainerRef = this.apptextField.viewContainerRef;
 
     const componentRef = viewContainerRef.createComponent(componentFactory); // replace in there
     componentRef.instance.name = data;
@@ -44,6 +49,5 @@ export class PageComponent implements OnInit {
       this.loadComponent(data[i].page_child,data[i].page_name);
     }
   }
-
  
 }

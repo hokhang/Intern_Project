@@ -10,4 +10,7 @@ export class page {
 
     @Column()
     page_name: string;
+
+    @Column()
+    value: string;
 }

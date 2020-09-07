@@ -13,11 +13,11 @@ export class TextFieldService {
     private apiService: ApiService,
   ) {}
 
-  // private data;
-  // share_data = this.data.asObservable();
+  private data = new Subject();
+  public share_data = this.data.asObservable();
 
-  // shareData(){
-  //   this.data.next(this.data);
-  // }
+  shareData(data?:any){
+    this.data.next(data);
+  }
 
 }

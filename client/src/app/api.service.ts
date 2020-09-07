@@ -26,6 +26,11 @@ export class ApiService {
       return data;
     }
 
+    async postData(data: string): Promise<any> {
+      let _data = await this.httpClient.post<any>(this.baseurl + '/page',data).toPromise();
+      return _data;
+    }
+
     // getOneStudent(id: any): Observable<student> {
     //   return this.httpClient.get<student> (this.baseurl + '/page/' + id);
     // }

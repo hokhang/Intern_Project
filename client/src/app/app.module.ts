@@ -11,6 +11,10 @@ import { PageComponent } from './page/page.component';
 import { ButtonComponent } from './button/button.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from "@angular/material/button";
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -26,8 +30,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [ApiService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // exports: [MatButtonModule],
 })
 export class AppModule { }
