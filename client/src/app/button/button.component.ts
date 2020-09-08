@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MDCRipple } from '@material/ripple';
+import { ButtonService } from '../button/button.service'
 
 //const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
 
@@ -10,9 +11,15 @@ import { MDCRipple } from '@material/ripple';
 })
 export class ButtonComponent implements OnInit {
   @Input() name;
-  constructor() { }
-
+  constructor(
+    private buttonService: ButtonService,
+  ) { }
+  message = "Congrat submit success"
   ngOnInit(): void {
+  }
+
+  onClick(){
+    this.buttonService.onClick(this.message)
   }
 
 }
