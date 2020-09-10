@@ -1,7 +1,7 @@
-<h3 style="color: #fa32a3; padding-top: 10px;">{{name}}</h3>
+<h3 style="color: #fa32a3; padding-top: 10px;">{{data.label}}</h3>
 <mat-form-field class="mdc-text-field mdc-text-field--outlined">
-  <mat-label >{{name}}</mat-label>
-    <input matInput type="text"  aria-labelledby="my-label-id" (change) = "onKey($event)">
+  <mat-label >{{data.label}}</mat-label>
+    <input matInput type="text"  aria-labelledby="my-label-id" placeholder="{{data.placeholder}}" (change) = "onKey($event)">
       <span class="mdc-notched-outline__leading"></span>
         <span class="mdc-floating-label" id="my-label-id"></span>
       <span class="mdc-notched-outline__trailing"></span>  

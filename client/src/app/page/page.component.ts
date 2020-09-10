@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, ViewChild, ComponentFactoryResolver, ComponentFactory } from '@angular/core';
-import { TextFieldDirective } from '../text-field/text-field.directive';
+import { TextFieldDirective } from 'src/app/component/text-field/text-field.directive';
 
 import { InfoComponent } from "src/app/Info_component/Info_component";
-import { TextFieldService } from '../text-field/text-field.service';
+import { TextFieldService } from '../component/text-field/text-field.service';
 import { ApiService } from '../api.service';
-import { dataOfTextField } from '../text-field/interface/interface.dto';
-import { ButtonService } from '../button/button.service'
+import { dataOfTextField } from '../component/text-field/interface/interface.dto';
+import { ButtonService } from 'src/app/component/button/button.service'
 
 @Component({
   selector: 'app-page',
@@ -29,25 +29,27 @@ export class PageComponent implements OnInit {
     this.showData();
   }
 
-  loadComponent(name_component,data){
-    const components = new InfoComponent();
-    const component = components.getComponents(name_component)
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component)
+  loadComponent(name_component:string,data){
+    let components = new InfoComponent();
+    let comp = components.getComponents(name_component);
+    console.log(comp);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(comp);
 
     const viewContainerRef = this.apptextField.viewContainerRef;
 
     const componentRef = viewContainerRef.createComponent(componentFactory); // replace in there
-    componentRef.instance.name = data;
+    componentRef.instance.data = data;
 
   }
 
   async renderPage(){
-    let data = await this.apiService.getAllText();
+    let data:Array<any> = await this.apiService.getAllText();
     console.log(data)
-    for(let i = 0; i < data.length ; i++){
-      
-      this.loadComponent(data[i].page_child,data[i].page_name);
-    }
+    data.forEach(p=>{
+      for(let _index in p){
+        this.loadComponent(p[_index].type,p[_index]);
+      }
+    })
   }
   
   data = [];

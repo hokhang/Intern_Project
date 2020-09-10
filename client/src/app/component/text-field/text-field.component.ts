@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { MDCTextField } from '@material/textfield';
 import { TextFieldService } from './text-field.service';
-import { ApiService } from '../api.service';
 import {dataOfTextField} from '../text-field/interface/interface.dto'
 
 
@@ -12,7 +11,7 @@ import {dataOfTextField} from '../text-field/interface/interface.dto'
 })
 @Injectable()
 export class TextFieldComponent implements OnInit {
-  @Input() name: any;
+  @Input() data: any;
   getall: any;
 
   // textfield = new MDCTextField(document.querySelector('.mdc-text-field'));
@@ -28,7 +27,7 @@ export class TextFieldComponent implements OnInit {
 
   onKey(event){
     let data: dataOfTextField = {};
-    data.key = this.name;
+    data.key = this.data.label;;
     data.value = event.target.value;
     this.textFieldService.shareData(data);
     // console.log(event);

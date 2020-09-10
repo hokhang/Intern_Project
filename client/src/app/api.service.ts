@@ -22,7 +22,7 @@ export class ApiService {
     } 
 
     async getAllText(): Promise<any> {
-      let data = await this.httpClient.get<any>(this.baseurl + '/page').toPromise();
+      let data = await this.httpClient.get<any>(this.baseurl + '/page/name?keyword=insert').toPromise();
       return data;
     }
 

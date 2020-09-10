@@ -19,6 +19,16 @@ export class PageService {
         const idea = this.pageEntity.create(data);
         this.pageEntity.save(idea);
         return idea;
-    } 
+    }
+    
+    handleDataOfComponent(name_comp: string, data: Array<any>){
+        var dataHandled: Array<any> = []
+        data.forEach(p=>{
+            let object = {};
+            object['type'.trim()] = name_comp;
+            dataHandled.push(Object.assign(object,p));
+        })
+        return dataHandled;
+    }
 }
 

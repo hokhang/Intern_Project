@@ -5,11 +5,11 @@ import { ApiService } from './api.service'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TextFieldComponent } from './text-field/text-field.component';
-import { TextFieldDirective } from './text-field/text-field.directive';
+import { TextFieldComponent } from './component/text-field/text-field.component';
+import { TextFieldDirective } from './component/text-field/text-field.directive';
 import { PageComponent } from './page/page.component';
-import { ButtonComponent } from './button/button.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
+import { ButtonComponent } from './component/button/button.component';
+import { TopBarComponent } from './component/top-bar/top-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from '@angular/material/input';

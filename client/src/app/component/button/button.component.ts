@@ -10,7 +10,7 @@ import { ButtonService } from '../button/button.service'
   styleUrls: ['./button.component.css']
 })
 export class ButtonComponent implements OnInit {
-  @Input() name;
+  @Input() data;
   constructor(
     private buttonService: ButtonService,
   ) { }

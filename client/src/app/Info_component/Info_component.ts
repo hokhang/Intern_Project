@@ -1,20 +1,20 @@
-import { TextFieldComponent } from "../text-field/text-field.component";
-import { ButtonComponent } from '../button/button.component';
-import { TopBarComponent } from '../top-bar/top-bar.component';
+import { TextFieldComponent } from "../component/text-field/text-field.component";
+import { ButtonComponent } from 'src/app/component/button/button.component';
+import { TopBarComponent } from '../component/top-bar/top-bar.component';
+import { Type } from '@angular/core';
 
 
 export class InfoComponent {
     constructor(
     ){}
-    name_component: any;
 
-    getComponents(name_component){
+    getComponents(name_component:string):Type<any>{
         switch (name_component) {
-            case "Text_field":
+            case "input":
                 return TextFieldComponent;
-            case "Button":
+            case "button":
                 return ButtonComponent;
-            case "Top_bar":
+            case "top_bar":
                 return TopBarComponent;
             default:
                 break;
