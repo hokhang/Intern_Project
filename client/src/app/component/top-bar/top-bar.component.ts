@@ -13,7 +13,7 @@ import {MDCTopAppBar} from '@material/top-app-bar';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
-  @Input() name;
+  @Input() data
   constructor() { }
 
   ngOnInit(): void {
