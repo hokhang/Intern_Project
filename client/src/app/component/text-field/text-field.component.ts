@@ -27,7 +27,7 @@ export class TextFieldComponent implements OnInit {
 
   onKey(event){
     let data: dataOfTextField = {};
-    data.key = this.data.label;;
+    data.key = this.data.key;
     data.value = event.target.value;
     this.textFieldService.shareData(data);
     // console.log(event);

@@ -14,7 +14,7 @@ export class InfoComponent {
                 return TextFieldComponent;
             case "button":
                 return ButtonComponent;
-            case "top_bar":
+            case "topbar":
                 return TopBarComponent;
             default:
                 break;

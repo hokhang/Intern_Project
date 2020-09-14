@@ -26,8 +26,8 @@ export class ApiService {
       return data;
     }
 
-    async postData(data: string): Promise<any> {
-      let _data = await this.httpClient.post<any>(this.baseurl + '/page',data).toPromise();
+    async postData(data: any): Promise<any> {
+      let _data = await this.httpClient.post<any>(this.baseurl + '/data-input', data).toPromise();
       return _data;
     }
 

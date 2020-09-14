@@ -1,16 +1,16 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 
 @Entity()
-export class page {
+export class datainput {
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    page_child: string;
+    first_name: string;
 
     @Column()
-    page_name: string;
+    last_name: string;
 
     @Column()
-    value: string;
+    mail: string;
 }

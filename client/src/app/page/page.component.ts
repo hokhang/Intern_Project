@@ -6,7 +6,8 @@ import { TextFieldService } from '../component/text-field/text-field.service';
 import { ApiService } from '../api.service';
 import { dataOfTextField } from '../component/text-field/interface/interface.dto';
 import { ButtonService } from 'src/app/component/button/button.service'
-
+import { typeOfDataInput } from '../page/data-input.dto';
+ 
 @Component({
   selector: 'app-page',
   templateUrl: './page.component.html',
@@ -27,6 +28,7 @@ export class PageComponent implements OnInit {
     this.renderPage();
     this.collectData();
     this.showData();
+    this.onClick();
   }
 
   loadComponent(name_component:string,data){
@@ -43,7 +45,7 @@ export class PageComponent implements OnInit {
   }
 
   async renderPage(){
-    let data:Array<any> = await this.apiService.getAllText();
+    let data: Array<any> = await this.apiService.getAllText();
     console.log(data)
     data.forEach(p=>{
       for(let _index in p){
@@ -78,5 +80,27 @@ export class PageComponent implements OnInit {
      console.log(response)
    })
   }
+  
+  
+  async onClick(): Promise<any> {
+    let type: typeOfDataInput = {};
+    type.first_name = this.data[0].value;
+    type.last_name = this.data[1].value;
+    type.mail = this.data[2].value;
+
+    // let type1 = {};
+
+    // this.data.forEach(p=>{
+    
+    //   console.log(p)
+    // })
+
+    
+    // this.apiService.postData(type);
+    console.log(type);
+    //console.log(this.data)  
+    console.log("button okiii")
+  }
+  
  
 }

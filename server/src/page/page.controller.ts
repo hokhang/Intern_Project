@@ -25,14 +25,13 @@ export class PageController {
             data.push(this.pageService.handleDataOfComponent(components[_index].type,data_temp));
         } 
         
-        
         // console.log(data);
         return data;
     }
 
     @Post()
     async create(@Body() data: PageInf) {
-        const idea = this.pageService.post(data)
-        return idea;
+        return this.pageService.post(data);
+        
     }
 }

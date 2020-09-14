@@ -15,12 +15,13 @@ export class PageService {
         return await this.pageEntity.find();
     }
 
-    async post(data: PageInf): Promise<any> {
-        const idea = this.pageEntity.create(data);
-        this.pageEntity.save(idea);
-        return idea;
+    async post(data: page): Promise<page> {
+       
+        return await this.pageEntity.save(data);
+        //return idea;
     }
-    
+
+    //Dont understand this function
     handleDataOfComponent(name_comp: string, data: Array<any>){
         var dataHandled: Array<any> = []
         data.forEach(p=>{
