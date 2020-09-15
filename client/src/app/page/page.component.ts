@@ -27,14 +27,13 @@ export class PageComponent implements OnInit {
   ngOnInit(): void {
     this.renderPage();
     this.collectData();
-    this.showData();
-    this.onClick();
+    this.handleEventButton();
   }
 
-  loadComponent(name_component:string,data){
+  loadComponent(name_component:string, data){
+
     let components = new InfoComponent();
     let comp = components.getComponents(name_component);
-    console.log(comp);
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(comp);
 
     const viewContainerRef = this.apptextField.viewContainerRef;
@@ -46,16 +45,15 @@ export class PageComponent implements OnInit {
 
   async renderPage(){
     let data: Array<any> = await this.apiService.getAllText();
-    console.log(data)
-    data.forEach(p=>{
-      for(let _index in p){
-        this.loadComponent(p[_index].type,p[_index]);
-      }
+    // console.log(data)
+    data.forEach(p=> {
+        this.loadComponent(p.type,p);
     })
   }
   
   data = [];
   i: any
+
   collectData(){
     this.textFieldService.share_data.subscribe(data =>{
       let response: dataOfTextField = data;
@@ -74,32 +72,34 @@ export class PageComponent implements OnInit {
     })
   }
 
-  showData(){
-   this.buttonService.current_data.subscribe(data =>{
-     let response = data;
-     console.log(response)
-   })
+  // showData(){
+  //  this.buttonService.current_data.subscribe(data =>{
+  //    let response = data;
+  //    console.log(response)
+  //  })
+  // }
+  
+  handleDataPost(data:Array<any>){
+    var dataOutput = {};
+    data.forEach(p=>{
+      let dataTemp = {};
+      dataTemp[p.key.trim()] = p.value;
+      dataOutput = Object.assign(dataOutput,dataTemp);
+    })
+    return dataOutput;
   }
-  
-  
+
+  handleEventButton(){
+    this.buttonService.current_data.subscribe(event=>{
+      switch(event){
+        case "submit()": this.onClick();
+      }
+    })
+    
+  }
   async onClick(): Promise<any> {
-    let type: typeOfDataInput = {};
-    type.first_name = this.data[0].value;
-    type.last_name = this.data[1].value;
-    type.mail = this.data[2].value;
-
-    // let type1 = {};
-
-    // this.data.forEach(p=>{
-    
-    //   console.log(p)
-    // })
-
-    
-    // this.apiService.postData(type);
-    console.log(type);
-    //console.log(this.data)  
-    console.log("button okiii")
+    let datapost = this.handleDataPost(this.data);
+    return this.apiService.postData(datapost);
   }
   
  

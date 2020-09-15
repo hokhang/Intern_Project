@@ -9,5 +9,5 @@ export const DataBase_CONFIG: TypeOrmModuleOptions = {
     //password: 'hobaokhang',
     database: 'Project',
     autoLoadEntities:true,
-    synchronize: false,
+    synchronize: true,
 }

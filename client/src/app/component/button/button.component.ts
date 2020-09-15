@@ -14,12 +14,12 @@ export class ButtonComponent implements OnInit {
   constructor(
     private buttonService: ButtonService,
   ) { }
-  message = "Congrat submit success"
+  
   ngOnInit(): void {
   }
 
   onClick(){
-    this.buttonService.onClick(this.message)
+    this.buttonService.onClick(this.data.action);
   }
 
 }
