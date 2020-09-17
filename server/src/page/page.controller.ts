@@ -12,11 +12,11 @@ export class PageController {
     ){}
     
     @Get('name')
-    async getAll(@Query('keyword') keyword:string):Promise<any>{
+    async getAll(@Query('keyword') keyword:string): Promise<any>{
         //const page_child = await this.pageService.findAll()
         let query = this.connection.createQueryRunner();
         let components: Array<any> = await query.query(`select * from components c where c.page = '${keyword}'`);
-        console.log(components);
+        //console.log(components);
 
         var sortedIndexComponent: Array<any> = components.sort((index1,index2) =>{
             if(index1.index > index2.index){
@@ -27,7 +27,7 @@ export class PageController {
             }
             return 0;
         })
-        console.log(sortedIndexComponent);
+        //console.log(sortedIndexComponent);
 
 
         var data: Array<any> = []; 
@@ -37,6 +37,7 @@ export class PageController {
 
             let data_temp: Array<any> = await query.query(`select * from ${components[_index].type}`);
             //console.log(data_temp)
+            
             //console.log(this.pageService.sortIndex(data_temp))
             data.push(this.pageService.handleDataOfComponent(components[_index].type,data_temp));
         } 

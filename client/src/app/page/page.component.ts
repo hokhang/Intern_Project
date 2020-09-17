@@ -2,11 +2,11 @@ import { Component, OnInit, Input, ViewChild, ComponentFactoryResolver, Componen
 import { TextFieldDirective } from 'src/app/component/text-field/text-field.directive';
 
 import { InfoComponent } from "src/app/Info_component/Info_component";
-import { TextFieldService } from '../component/text-field/text-field.service';
 import { ApiService } from '../api.service';
 import { dataOfTextField } from '../component/text-field/interface/interface.dto';
-import { ButtonService } from 'src/app/component/button/button.service'
-import { typeOfDataInput } from '../page/data-input.dto';
+import { ButtonService } from 'src/app/component/button/button.service';
+import { TransferDataService } from '../component/service/transfer-data.service';
+import { TableService } from '../component/table/table.service'
  
 @Component({
   selector: 'app-page',
@@ -15,19 +15,22 @@ import { typeOfDataInput } from '../page/data-input.dto';
 })
 export class PageComponent implements OnInit {
 
+
   @ViewChild(TextFieldDirective,{static: true}) apptextField: TextFieldDirective;
 
   constructor( 
     private componentFactoryResolver: ComponentFactoryResolver,
-    private textFieldService: TextFieldService,
     private apiService: ApiService,
     private buttonService: ButtonService,
+    private transDataService:TransferDataService,
+    private tableService: TableService,
   ) {}
 
   ngOnInit(): void {
     this.renderPage();
     this.collectData();
     this.handleEventButton();
+    this.emmitTable();
   }
 
   loadComponent(name_component:string, data){
@@ -45,7 +48,7 @@ export class PageComponent implements OnInit {
 
   async renderPage(){
     let data: Array<any> = await this.apiService.getAllText();
-    // console.log(data)
+    //console.log(data)
     data.forEach(p=> {
         this.loadComponent(p.type,p);
     })
@@ -55,9 +58,9 @@ export class PageComponent implements OnInit {
   i: any
 
   collectData(){
-    this.textFieldService.share_data.subscribe(data =>{
+    this.transDataService.share_data.subscribe(data =>{
       let response: dataOfTextField = data;
-   
+    
       // console.log(this.data.length)
       let index = this.data.findIndex(p => p.key === response.key)
       if( index !== -1){
@@ -67,7 +70,7 @@ export class PageComponent implements OnInit {
         this.data.push(response);
       }
       console.log(index)
-      console.log(response.value)
+      console.log("gvhjd",response)
       console.log(this.data);
     })
   }
@@ -79,7 +82,7 @@ export class PageComponent implements OnInit {
   //  })
   // }
   
-  handleDataPost(data:Array<any>){
+  handleDataPost(data: Array<any>){
     var dataOutput = {};
     data.forEach(p=>{
       let dataTemp = {};
@@ -92,14 +95,35 @@ export class PageComponent implements OnInit {
   handleEventButton(){
     this.buttonService.current_data.subscribe(event=>{
       switch(event){
-        case "submit()": this.onClick();
+        case "submit()": this.onClickSubmit();
+        case "loaddata()": this.onClickLoadData();
       }
     })
     
   }
-  async onClick(): Promise<any> {
+
+  async onClickSubmit(): Promise<any> {
     let datapost = this.handleDataPost(this.data);
     return this.apiService.postData(datapost);
+  }
+  
+  emmitTable(){
+    this.tableService.current_data.subscribe(data=>{
+      this.onClickLoadData()
+    })
+  }
+  
+  am = []
+  async onClickLoadData(): Promise<any> {
+    console.log("no action in here")
+    let data: Array<any> = await this.apiService.getAllData();
+    // console.log(data)
+    data.forEach(p=>{
+      // console.log(p)
+      this.am.push(p)
+    })
+    console.log(this.am) 
+    return this.am
   }
   
  

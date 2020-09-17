@@ -19,6 +19,7 @@ export class ButtonComponent implements OnInit {
   }
 
   onClick(){
+    //check action in database to know this button;
     this.buttonService.onClick(this.data.action);
   }
 

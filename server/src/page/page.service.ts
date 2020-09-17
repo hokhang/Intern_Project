@@ -24,6 +24,7 @@ export class PageService {
     handleDataOfComponent(name_comp: string, data: Array<any>){
         var dataHandled: Array<any> = []
         data.forEach(p=>{
+            // console.log(p);
             let object = {};
             object['type'.trim()] = name_comp;
             dataHandled.push(Object.assign(object,p));

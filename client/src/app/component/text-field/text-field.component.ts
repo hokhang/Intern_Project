@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { MDCTextField } from '@material/textfield';
 import { TextFieldService } from './text-field.service';
-import {dataOfTextField} from '../text-field/interface/interface.dto'
+import {dataOfTextField} from '../text-field/interface/interface.dto';
+import {TransferDataService} from '../service/transfer-data.service'
 
 
 @Component({
@@ -19,6 +20,7 @@ export class TextFieldComponent implements OnInit {
 
   constructor(
     private textFieldService: TextFieldService,
+    private transDataService: TransferDataService
   ) {}
 
   ngOnInit(): void {
@@ -28,9 +30,10 @@ export class TextFieldComponent implements OnInit {
   onKey(event){
     let data: dataOfTextField = {};
     data.key = this.data.key;
+    
     data.value = event.target.value;
-    this.textFieldService.shareData(data);
-    // console.log(event);
+    this.transDataService.shareData(data);
+    //console.log(event);
   }
 
 

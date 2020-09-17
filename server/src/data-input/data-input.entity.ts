@@ -12,5 +12,17 @@ export class datainput {
     last_name: string;
 
     @Column()
-    mail: string;
+    gender: string;
+
+    @Column()
+    student_id: number;
+
+    @Column()
+    personal_id: number;
+
+    @Column()
+    email_address: string;
+
+    @Column()
+    phone_number: number;
 }

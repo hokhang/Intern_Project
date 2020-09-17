@@ -13,11 +13,4 @@ export class TextFieldService {
     private apiService: ApiService,
   ) {}
 
-  private data = new Subject();
-  public share_data = this.data.asObservable();
-
-  shareData(data?:any){
-    this.data.next(data);
-  }
-
 }

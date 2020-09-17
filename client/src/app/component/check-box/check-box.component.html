@@ -1,0 +1,9 @@
+<section class="example-section">
+    <label> <h3 style="color: #fa32a3; padding-top: 10px; margin-left: 20px;">{{data.label}}</h3></label>
+    <mat-radio-group >
+        
+      <mat-radio-button class="example-margin" *ngFor= "let item of labelPosition  " value ="{{item.key}}" (change) ="onClick(item.labelvalue)"> {{item.labelvalue}} </mat-radio-button>
+
+    </mat-radio-group>
+  </section>
+
